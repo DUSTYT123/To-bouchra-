@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>To Bouchra ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Sacramento&display=swap" rel="stylesheet">
+<style>
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  color:white;
+  background:linear-gradient(135deg,#ff758c,#ff7eb3);
+  position:relative;
+  overflow-x:hidden;
+}
+
+body::before{
+  content:"";
+  position:absolute;
+  top:0; left:0; right:0; bottom:0;
+  background-image:
+    radial-gradient(circle at 10% 20%, #ffc0cb 10%, transparent 10%),
+    radial-gradient(circle at 40% 80%, #ffb6c1 8%, transparent 8%),
+    radial-gradient(circle at 70% 40%, #ffe4e1 12%, transparent 12%),
+    radial-gradient(circle at 90% 70%, #ffb3c7 9%, transparent 9%);
+  background-repeat:repeat;
+  background-size:200px 200px;
+  z-index:0;
+}
+
+.container{
+  max-width:600px;
+  margin:auto;
+  padding:70px 20px;
+  display:flex;
+  flex-direction:column;
+  gap:80px;
+  text-align:center;
+  position:relative;
+  z-index:1;
+}
+
+.photo-frame{
+  position:relative;
+  width:170px;
+  margin:auto;
+  padding:10px;
+  border-radius:22px;
+  border:3px solid rgba(255,255,255,.6);
+  transform:rotate(-90deg);
+  box-shadow:0 8px 20px rgba(0,0,0,0.25);
+}
+
+.photo-frame img{
+  width:100%;
+  border-radius:15px;
+}
+
+.frame-heart{position:absolute;font-size:1.3em;}
+.fh1{top:-10px;left:15px;}
+.fh2{top:-10px;right:15px;}
+.fh3{bottom:-10px;left:25px;}
+.fh4{bottom:-10px;right:25px;}
+
+h1{
+  font-family:'Sacramento', cursive;
+  font-size:2.2em;
+  margin-top:20px;
+}
+
+h2{
+  font-family:'Sacramento', cursive;
+  font-size:1.6em;
+  margin-bottom:15px;
+}
+
+.section{
+  display:flex;
+  flex-direction:column;
+  gap:35px;
+  margin-top:40px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
+  justify-items:center;
+}
+.grid-card:last-child:nth-child(odd){
+  grid-column:1 / -1;
+}
+.grid-card{
+  width:140px;
+  background:rgba(255,255,255,.18);
+  padding:12px;
+  border-radius:18px;
+  box-shadow:0 4px 12px rgba(0,0,0,.2);
+  transition:transform .3s;
+}
+.grid-card:hover{transform:scale(1.05);}
+.grid-card img{width:100%;border-radius:15px;cursor:pointer;}
+.grid-card p{font-size:.85em;margin-top:8px;font-weight:600; font-family:'Poppins', sans-serif;}
+
+.list-box{
+  background:rgba(255,255,255,.15);
+  padding:20px;
+  border-radius:20px;
+  text-align:left;
+  backdrop-filter: blur(6px);
+  max-width:100%;
+  box-sizing:border-box;
+  margin:auto;
+}
+
+.list-box h3{
+  text-align:center;
+  margin-bottom:12px;
+  font-family:'Sacramento', cursive;
+  font-size:1.2em;
+}
+
+.list-box ul{
+  list-style:none;
+  padding:0;
+  line-height:1.9;
+  font-family:'Poppins', sans-serif;
+  font-weight:600;
+  font-size:1em;
+}
+
+.list-box ul li::before{content:"♡ "; color:#ffc0cb;}
+
+#text-box{
+  background:rgba(255,255,255,.15);
+  padding:22px;
+  border-radius:20px;
+  backdrop-filter: blur(6px);
+  font-size:1.1em;
+  line-height:1.8em;
+  font-family:'Poppins', sans-serif;
+  font-weight:600;
+  max-width:100%;
+  margin:auto;
+}
+
+footer{
+  font-size:.85em;
+  margin-top:30px;
+}
+
+.zoomable-img{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.2);
+  max-width: 95%;
+  max-height: 95%;
+  z-index: 9999;
+  transition: transform 0.3s ease-in-out;
+  border-radius:15px;
+  box-shadow:0 8px 30px rgba(0,0,0,0.6);
+  cursor: pointer;
+}
+
+/* Songs Carousel */
+.songs-carousel{
+  display:flex;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  gap:20px;
+  padding:20px 0;
+  -webkit-overflow-scrolling: touch;
+}
+.songs-carousel::-webkit-scrollbar{display:none;}
+.song-item{
+  flex:0 0 auto;
+  width:150px;
+  scroll-snap-align:center;
+  text-align:center;
+  background:rgba(255,255,255,.1);
+  border-radius:15px;
+  padding:10px;
+  box-shadow:0 4px 10px rgba(0,0,0,.2);
+}
+.song-item img{
+  width:100%;
+  border-radius:10px;
+  margin-bottom:5px;
+}
+.song-title{
+  font-size:0.9em;
+  margin-bottom:5px;
+  font-weight:600;
+}
+.song-controls{
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+}
+.song-controls button{
+  border:none;
+  background:white;
+  color:#ff4d6d;
+  border-radius:10px;
+  padding:6px 0;
+  font-weight:600;
+  cursor:pointer;
+  font-size:0.85em;
+}
+.song-controls input[type=range]{width:100%;}
+.time-display{
+  font-size:0.75em;
+  color:white;
+  display:flex;
+  justify-content:space-between;
+}
+
+/* Dots */
+.dots{
+  text-align:center;
+  margin-top:10px;
+}
+.dot{
+  display:inline-block;
+  width:8px;
+  height:8px;
+  background:white;
+  border-radius:50%;
+  margin:0 4px;
+  opacity:0.5;
+}
+.dot.active{opacity:1;}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="photo-frame">
+<img src="https://f.top4top.io/p_36809g4rn0.jpg">
+<span class="frame-heart fh1">❤️</span>
+<span class="frame-heart fh2">💗</span>
+<span class="frame-heart fh3">💕</span>
+<span class="frame-heart fh4">💖</span>
+</div>
+
+<h1>To My Lovely Bouchra 💖</h1>
+
+<div id="text-box">
+<p id="message"></p>
+</div>
+
+<!-- FILMS & SERIES -->
+<div class="section">
+<h2>🎬 Movies & Series</h2>
+<div class="grid">
+<div class="grid-card"><img src="https://l.top4top.io/p_3684qagji1.jpg" class="zoomable"><p>Little Women</p></div>
+<div class="grid-card"><img src="https://i.top4top.io/p_3684ephek1.jpg" class="zoomable"><p>How to Lose a Guy in 10 Days</p></div>
+<div class="grid-card"><img src="https://k.top4top.io/p_3684klhpz1.jpg" class="zoomable"><p>Call Me By Your Name</p></div>
+<div class="grid-card"><img src="https://h.top4top.io/p_3684vz8ul1.jpg" class="zoomable"><p>2521</p></div>
+</div>
+</div>
+
+<!-- FOOD & DRINKS -->
+<div class="section">
+<h2>🍔 Food & Drinks</h2>
+<div class="grid">
+<!-- الأطعمة -->
+<div class="grid-card"><img src="https://g.top4top.io/p_3684edjko1.jpg" class="zoomable"><p>Pizza</p></div>
+<div class="grid-card"><img src="https://a.top4top.io/p_369431wuz1.jpg" class="zoomable"><p>Pasta</p></div>
+<div class="grid-card"><img src="https://a.top4top.io/p_3684sn1io1.jpg" class="zoomable"><p>Lasagne</p></div>
+<!-- المشروبات -->
+<div class="grid-card"><img src="https://c.top4top.io/p_3684ssume1.jpg" class="zoomable"><p>Tea</p></div>
+<div class="grid-card"><img src="https://f.top4top.io/p_3684ctarq1.jpg" class="zoomable"><p>Water</p></div>
+<div class="grid-card"><img src="https://c.top4top.io/p_3684a6vao1.jpg" class="zoomable"><p>Strawberry Milk</p></div>
+</div>
+</div>
+
+<!-- ANIMALS -->
+<div class="section">
+<h2>🐾 Animals She Loves</h2>
+<div class="grid">
+  <div class="grid-card"><img src="https://g.top4top.io/p_3683obb171.jpg" class="zoomable"><p>White Rabbit</p></div>
+  <div class="grid-card"><img src="https://c.top4top.io/p_3684mxgsi1.jpg" class="zoomable"><p>White Cat</p></div>
+  <div class="grid-card"><img src="https://e.top4top.io/p_36844eo371.jpg" class="zoomable"><p>Blue Whale</p></div>
+</div>
+</div>
+
+<!-- CLOTHES -->
+<div class="section">
+<h2>👗 Clothes She Loves</h2>
+<div class="grid">
+<div class="grid-card"><img src="https://l.top4top.io/p_36876z8aw1.jpg" class="zoomable"><p>Outfit 1</p></div>
+<div class="grid-card"><img src="https://c.top4top.io/p_3694fwuth1.jpg" class="zoomable"><p>Outfit 2</p></div>
+<div class="grid-card"><img src="https://a.top4top.io/p_3687jmm8e1.jpg" class="zoomable"><p>Outfit 3</p></div>
+<div class="grid-card"><img src="https://j.top4top.io/p_3687hxktb1.jpg" class="zoomable"><p>Outfit 4</p></div>
+</div>
+</div>
+
+<!-- FAVORITE SONGS CAROUSEL -->
+<div class="section">
+<h2>🎵 Favorite Songs</h2>
+<div class="songs-carousel" id="songs-carousel"></div>
+<div class="dots" id="song-dots"></div>
+</div>
+
+<!-- LISTS -->
+<div class="section">
+<div class="list-box">
+<h3>🤍 Things That Comfort Her</h3>
+<ul>
+<li>Me</li>
+<li>Singing & talking</li>
+<li>Food</li>
+</ul>
+</div>
+<div class="list-box">
+<h3>✨ Favorite Trait</h3>
+<ul><li>Spontaneity</li></ul>
+</div>
+<div class="list-box">
+<h3>💬 Something She Loves</h3>
+<ul><li>When people tell her: “You’re so cool”</li></ul>
+</div>
+<div class="list-box">
+<h3>☀️ A Memory That Makes Her Smile</h3>
+<ul>
+<li>When I stood next to her and the sun hit me, I saw it in her eyes and knew she loved me. She said she was cold before, then I rested my head on the schoolbag.</li>
+</ul>
+</div>
+<div class="list-box">
+<h3>🔒 She Wishes Never Changes</h3>
+<ul><li>Her relationship with me and with Houda</li></ul>
+</div>
+<div class="list-box">
+<h3>⏰ Her Favorite Moments</h3>
+<ul>
+<li>When she gets ready before school</li>
+<li>When I walk her home</li>
+</ul>
+</div>
+</div>
+
+<footer>From Islam 🤍</footer>
+</div>
+
+<script>
+// typewriter للرسالة
+const text=`              Hmm.
+
+From the first time I see you, I'm deeply fall in love with you.
+I do this website to you on the occasion of the valentine day to show you how your boyfriend loves you so much. I know sometimes I do thinks make you sad or mad, at least i try to make you happy to forget it. I wish i can live with you the rule of my life and  feel every simple happy and sad things  pass through my life soo please don't leave me cause i love you so much and I'm sorry to say no to you, i want to surprise you with this website without tell you about it.
+This is the website i tell you that I work on. Just an idea come into my head so i do it to make you feel my love for you
+I'll love you forever 💖`;
+
+let i=0;
+const msg=document.getElementById("message");
+(function type(){
+  if(i<text.length){
+    msg.innerHTML+="<b>"+text.charAt(i)+"</b>";
+    i++;
+    setTimeout(type,40);
+  }
+})();
+
+// تكبير الصور عند الضغط عليها
+document.querySelectorAll('.zoomable').forEach(img=>{
+  img.addEventListener('click', ()=>{
+    const zoomed=document.createElement('img');
+    zoomed.src=img.src;
+    zoomed.className='zoomable-img';
+    document.body.appendChild(zoomed);
+    zoomed.addEventListener('click', ()=>{
+      zoomed.remove();
+    });
+  });
+});
+
+// Songs carousel setup
+const songs=[
+  {title:"Joyride", src:"https://f.top4top.io/m_3683cp29w1.m4a", img:"https://f.top4top.io/p_3694judc11.jpg"},
+  {title:"No one noticed", src:"https://i.top4top.io/m_3683fdem21.m4a", img:"https://i.top4top.io/p_3694jyo421.jpg"},
+  {title:"Save me", src:"https://c.top4top.io/m_36849t6cs1.m4a", img:"https://e.top4top.io/p_3688ghhm41.jpg"},
+  {title:"Run", src:"https://k.top4top.io/m_36834j63q1.m4a", img:"https://e.top4top.io/p_3688ghhm41.jpg"},
+  {title:"Butterfly", src:"https://g.top4top.io/m_3683vdknp1.m4a", img:"https://a.top4top.io/p_3688c76gg1.jpg"},
+  {title:"Pied piper", src:"https://c.top4top.io/m_3683c3cwm1.m4a", img:"https://c.top4top.io/p_3688fapwi1.jpg"},
+  {title:"Eleven eleven", src:"https://c.top4top.io/m_3688dummy.m4a", img:"https://a.top4top.io/p_3688nt9gs1.jpg"},
+  {title:"My love my love my love", src:"https://e.top4top.io/m_3683io4ov1.m4a", img:"https://k.top4top.io/p_3688ridxg1.jpg"},
+  {title:"Magic shop", src:"https://h.top4top.io/m_3683xvb0x1.m4a", img:"https://c.top4top.io/p_3688w36dw1.jpg"}
+];
+
+const carousel=document.getElementById('songs-carousel');
+const dotsContainer=document.getElementById('song-dots');
+
+songs.forEach((song,index)=>{
+  const div=document.createElement('div');
+  div.className='song-item';
+  div.innerHTML=`
+    <img src="${song.img}">
+    <div class="song-title">${song.title}</div>
+    <div class="song-controls">
+      <button id="btn-${index}">Play</button>
+      <input type="range" id="range-${index}" min="0" max="100" value="0">
+      <div class="time-display"><span id="current-${index}">0:00</span><span id="duration-${index}">0:00</span></div>
+      <audio id="audio-${index}" src="${song.src}"></audio>
+    </div>
+  `;
+  carousel.appendChild(div);
+
+  const dot=document.createElement('span');
+  dot.className='dot';
+  dotsContainer.appendChild(dot);
+});
+
+function updateDots(){
+  const scrollLeft=carousel.scrollLeft;
+  const itemWidth=carousel.querySelector('.song-item').offsetWidth + 20;
+  const index=Math.round(scrollLeft/itemWidth);
+  document.querySelectorAll('.dot').forEach((d,i)=>{d.classList.toggle('active',i===index)});
+}
+carousel.addEventListener('scroll', updateDots);
+updateDots();
+
+// Play/Pause logic
+songs.forEach((s,index)=>{
+  const audio=document.getElementById(`audio-${index}`);
+  const btn=document.getElementById(`btn-${index}`);
+  const range=document.getElementById(`range-${index}`);
+  const currentDisplay=document.getElementById(`current-${index}`);
+  const durationDisplay=document.getElementById(`duration-${index}`);
+
+  audio.addEventListener('loadedmetadata',()=>{
+    const min=Math.floor(audio.duration/60);
+    const sec=Math.floor(audio.duration%60).toString().padStart(2,'0');
+    durationDisplay.textContent=`${min}:${sec}`;
+  });
+
+  btn.addEventListener('click',()=>{
+    if(audio.paused){
+      document.querySelectorAll('audio').forEach(a=>a.pause());
+      document.querySelectorAll('button').forEach(b=>{if(b.id.startsWith('btn-'))b.textContent='Play';});
+      audio.play();
+      btn.textContent='Pause';
+    }else{
+      audio.pause();
+      btn.textContent='Play';
+    }
+  });
+
+  audio.addEventListener('timeupdate',()=>{
+    range.value=(audio.currentTime/audio.duration)*100||0;
+    const min=Math.floor(audio.currentTime/60);
+    const sec=Math.floor(audio.currentTime%60).toString().padStart(2,'0');
+    currentDisplay.textContent=`${min}:${sec}`;
+  });
+
+  range.addEventListener('input',()=>{
+    audio.currentTime=(range.value/100)*audio.duration;
+  });
+});
+</script>
+</body>
+</html>
